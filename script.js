@@ -16,3 +16,33 @@ function setOperator(op) {
     previousInput = currentInput;
     currentInput = '';
 }
+function clearDisplay() {
+    currentInput = '';
+    previousInput = '';
+    operator = '';
+    display.value = '';
+}
+
+function calculate() {
+    if (currentInput === '' || previousInput === '') return;
+    let result;
+    switch (operator) {
+        case '+':
+            result = parseFloat(previousInput) + parseFloat(currentInput);
+            break;
+        case '-':
+            result = parseFloat(previousInput) - parseFloat(currentInput);
+            break;
+        case '*':
+            result = parseFloat(previousInput) * parseFloat(currentInput);
+            break;
+        case '/':
+            result = parseFloat(previousInput) / parseFloat(currentInput);
+            break;
+    }
+    display.value = result;
+    currentInput = result.toString();
+    previousInput = '';
+    operator = '';
+}
+
