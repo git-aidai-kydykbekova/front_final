@@ -7,6 +7,7 @@ function appendNumber(number) {
     currentInput += number;
     display.value = currentInput;
 }
+
 function setOperator(op) {
     if (currentInput === '') return;
     if (previousInput !== '') {
@@ -16,6 +17,7 @@ function setOperator(op) {
     previousInput = currentInput;
     currentInput = '';
 }
+
 function clearDisplay() {
     currentInput = '';
     previousInput = '';
@@ -45,4 +47,3 @@ function calculate() {
     previousInput = '';
     operator = '';
 }
-
