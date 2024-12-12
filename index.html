@@ -26,7 +26,16 @@
         <button class="btn clear" onclick="clearDisplay()">C</button>
         <button class="btn operator" onclick="setOperator('/')">/</button>
         <button class="btn equal" onclick="calculate()">=</button>
+        <button class="btn operator" onclick="setOperator('sqrt')">√</button>
+        <button class="btn operator" onclick="setOperator('%')">%</button>
+        <button onclick="scientificMode()">S Mode</button>
+        <div id="scientific-buttons" class="buttons" style="display:none;">
+            <button class="btn operator" onclick="setOperator('sin')">sin</button>
+            <button class="btn operator" onclick="setOperator('cos')">cos</button>
+            <button class="btn operator" onclick="setOperator('tan')">tan</button>
+        </div>
     </div>
+
 </div>
 
 <script src="script.js"></script>
