@@ -9,8 +9,21 @@ function appendNumber(number) {
     display.value = currentInput;
 }
 
+function appendDot() {
+    if (!currentInput.includes('.')) {
+        currentInput += '.';
+        display.value = currentInput;
+    }
+}
+
 function setOperator(op) {
-    if (currentInput === '') return;
+    if (currentInput === '' && (op !== 'sqrt' && op !== '%' && op !== 'sin' && op !== 'cos' && op !== 'tan')) return;
+    if (op === 'sqrt' || op === '%' || op === 'sin' || op === 'cos' || op === 'tan') {
+        operator = op;
+        calculate();
+        operator = '';
+        return;
+    }
     if (previousInput !== '') {
         calculate();
     }
@@ -27,7 +40,12 @@ function clearDisplay() {
 }
 
 function calculate() {
-    if (currentInput === '' || previousInput === '') return;
+    if (operator === 'sqrt' || operator === '%' || operator === 'sin' || operator === 'cos' || operator === 'tan') {
+        if (currentInput === '') return;
+    } else {
+        if (currentInput === '' || previousInput === '') return;
+    }
+
     let result;
     switch (operator) {
         case '+':
@@ -70,7 +88,7 @@ function scientificMode() {
 }
 document.addEventListener('keydown', function (event) {
     const key = event.key;
-    if (!isNaN(key)) { // Number keys
+    if (!isNaN(key) || key === '.') {
         appendNumber(key);
     } else if (['+', '-', '*', '/'].includes(key)) {
         setOperator(key);
